@@ -1,0 +1,130 @@
+﻿<Window x:Class="peer5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Name="Fractal"
+        Title="MainWindow" MaxHeight="1080" MaxWidth="1560"
+        MinHeight="540" MinWidth="800" Width="800" Height="540">
+    <StackPanel 
+        Orientation="Horizontal">
+        <Viewbox>
+            <StackPanel Orientation="Vertical" Margin="10" Name="AllSettings" Width="180">
+                <Button Margin="-10 -10 0 30" HorizontalAlignment="Left" FontSize="15" Width="70" Click="Rules">
+                    Правила
+                </Button>
+                <Label HorizontalAlignment="Left"
+                       Height="30" Width="145" Content="Глубина фрактала:" FontSize="10"/>
+                <TextBox Name="Depth" Width="50" Height="15" HorizontalAlignment="Left" FontSize = "10"
+                         Margin= "30 -5 0 5" TextChanged="DepthTextBoxChanged"/>
+                <Label HorizontalAlignment="Left"
+                       Height="30" Width="145" Content="Тип фрактала:" FontSize="10"/>
+                <ComboBox HorizontalAlignment="Left" Margin="30 -5 0 5" Name="Fractals" Width="150" Height="20" FontSize="10" >
+                    <ComboBoxItem Selected="TreeSelected" Name="Tree">Дерево Пифагора</ComboBoxItem>
+                    <ComboBoxItem Selected="KochSelected" Name="Koch">Кривая Коха</ComboBoxItem>
+                    <ComboBoxItem Selected="CarpetSelected" Name="Carpet">Ковер Серпинского</ComboBoxItem>
+                    <ComboBoxItem Selected="TriangleSelected" Name="Triangle">Треугольник Серпинского</ComboBoxItem>
+                    <ComboBoxItem Selected="CantorSelected" Name="Cantor">Множество Кантора</ComboBoxItem>
+                </ComboBox>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label HorizontalAlignment="Left"
+                           Height="30" Width="90" Content="Начальный цвет:" FontSize="10"/>
+                    <Label Grid.Column="1" HorizontalAlignment="Left"
+                           Height="30" Width="90" Content="Конечный цвет:" FontSize="10"/>
+                    <ComboBox Name="StartColor" SelectionChanged="StartColorSelectedItem" Grid.Row="1"  Width="90" Height="20" FontSize="10" >
+                        <ComboBoxItem Background="Red" Name="StartRed">Красный</ComboBoxItem>
+                        <ComboBoxItem Background="Orange" Name="StartOrange">Оранжевый</ComboBoxItem>
+                        <ComboBoxItem Background="Yellow" Name="StartYellow">Желтый</ComboBoxItem>
+                        <ComboBoxItem Background="Green" Name="StartGreen">Зелёный</ComboBoxItem>
+                        <ComboBoxItem Background="Blue" Name="StartBlue">Синий</ComboBoxItem>
+                        <ComboBoxItem Background="Black" Foreground="White" Name="StartBlack">Черный</ComboBoxItem>
+                        <ComboBoxItem Background="BlueViolet" Foreground="White" Name="StartViolet">Фиолетовый</ComboBoxItem>
+                    </ComboBox>
+                    <ComboBox Name="FinishColor" SelectionChanged="FinishColorSelectedItem" Grid.Row="1" Grid.Column="1" Width="90" Height="20" FontSize="10" >
+                        <ComboBoxItem Background="Red" Name="FinishRed">Красный</ComboBoxItem>
+                        <ComboBoxItem Background="Orange" Name="FinishOrange">Оранжевый</ComboBoxItem>
+                        <ComboBoxItem Background="Yellow" Name="FinishYellow">Желтый</ComboBoxItem>
+                        <ComboBoxItem Background="Green" Name="FinishGreen">Зелёный</ComboBoxItem>
+                        <ComboBoxItem Background="Blue" Name="FinishBlue">Синий</ComboBoxItem>
+                        <ComboBoxItem Background="Black" Name="FinishBlack" Foreground="White">Черный</ComboBoxItem>
+                        <ComboBoxItem Background="BlueViolet" Name="FinishViolet" Foreground="White">Фиолетовый</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+                <StackPanel Name="SettingsForTree" Visibility="Hidden" Margin="0 30 0 30">
+                    <Label HorizontalAlignment="Left" 
+                           Height="30" Width="155" Content="Коэффициент отношения(в %):" FontSize="10"/>
+                    <TextBox Name="Coefficient" Width="50" Height="15" HorizontalAlignment="Left" FontSize = "10"
+                             Margin= "30 -5 0 5" TextChanged="CoefficientTextBoxChanged"/>
+                    <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label HorizontalAlignment="Left"
+                           Height="30" Width="90" Content="Левый угол(в °):" FontSize="10"/>
+                    <Label Grid.Column="1" HorizontalAlignment="Left"
+                           Height="30" Width="90" Content="Правый угол(в °):" FontSize="10"/>
+                    <TextBox Grid.Row="1" Name="LeftAngle" Width="50" Height="15" HorizontalAlignment="Left" FontSize = "10"
+                             Margin= "30 -5 0 5" TextChanged="LeftAngleTextBoxChanged"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" Name="RightAngle" Width="50" Height="15" HorizontalAlignment="Left" FontSize = "10"
+                             Margin= "30 -5 0 5" TextChanged="RightAngleTextBoxChanged"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Name="SettingsForCantor" Visibility="Hidden" Margin="0 -100 0 30">
+                    <Label HorizontalAlignment="Left" 
+                           Height="30" Width="155" Content="Расстояние между отрезками:" FontSize="10"/>
+                    <TextBox Name="DistanceBetweenCuts" Width="50" Height="15" HorizontalAlignment="Left" FontSize = "10"
+                             Margin= "30 -5 0 5" TextChanged="DistanceBetweenCutsTextBoxChanged"/>
+                    
+                </StackPanel>
+                <Button Width="120" Height="30" FontSize="15" Name="PaintButton" Click="Paint">Нарисовать</Button>
+                
+            </StackPanel>
+        </Viewbox>
+        <Viewbox>
+            <Grid>
+                <Grid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Name="Save" Header="Сохранить" Click="SaveClick"></MenuItem>
+                        <MenuItem Name="ResetMove" Header="Вернуть в изначальное положение" Click="ResetMoveClick" ></MenuItem>
+                    </ContextMenu>
+                </Grid.ContextMenu>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ScrollViewer Name="ScrollViewer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                              HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" 
+                              Width="520" Height="520">
+                    <Canvas Name="Canvas" Background="LightCyan" Width = "520" Height="520"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" 
+                            MouseDown="CanvasMouseDown" MouseUp="CanvasMouseUp" MouseMove="CanvasMouseMove">
+                    </Canvas>
+                </ScrollViewer>
+                <Button  Name="ZoomMore" Canvas.Right="20" Canvas.Top="230" FontSize="20" Width="30" Height="30" FontWeight="Bold" Click="ZoomMoreClick"  Margin="0 00 50 50" VerticalAlignment= "Center" HorizontalAlignment="Right">
+                    +
+                </Button>
+                <Button Name="ZoomLess" Canvas.Right="20" Canvas.Top="260" FontSize="15" Width="30" Height="30" FontWeight="Bold" Click="ZoomLessClick" Margin="0 50 50 0" VerticalAlignment= "Center" HorizontalAlignment="Right">
+                    —
+                </Button>
+            </Grid>
+        </Viewbox>
+    </StackPanel>
+</Window>
