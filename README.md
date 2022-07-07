@@ -1,24 +1,33 @@
 # fractals
-Привет!
-B этой работе тебе будут представлены 5 видов фракталов:
-1. Обдуваемое ветром фрактальное дерево.
-2. Кривая Коха.
-3. Ковер Серпинского.
-4. Треугольник Серпинского.
-5. Множество Кантора.
-Надеюсь, тебе понравится!
+Application algorithm:
 
-Теперь к правилам:
-Про глубину рекурсии: в целях корректной работы на неё
-поставлено ограничение, для каждого фрактала своё:
-Дерево Пифагора - 8
-Кривая Коха - 6
-Ковёр Серпинского - 4
-Треугольник Серпинского - 7
-Множество Кантора - 7
-Соблюдай его, пожалуйста. При каждом изменении глубины фрактал перерисовывается.
-Моя программа не предусматривает увеличение зума до рисования, поэтому изначально эта кнопка заблокирована.
-Минимальное значение всех параметров - 0. Максимальное: углы - 180, коэффициент 75, расстояние между отрезками - 60.
-Чтобы сохранить картинку или сбросить движение картинки нужно вызвать контекстное меню,
-нажав правую кнопку мыши на холсте. Максимальное увеличение зума - 5. Значение глубины по умолчанию - 0.
+A Windows Presentation Foundation (.NET 5) window application has been developed that allows:
+### 1. Draw five types of fractals. Descriptions of fractals are presented below.
+### 2. Provide the user with a choice of the current fractal for drawing.
+### 3. Provide the user with the ability to set the number of recursion steps (its depth - the number of recursive calls). When changing the recursion depth, the fractal should automatically redrawn. Watch out for stack overflow.
+### 4. Report incorrect data entry, conflicting or invalid data values and other abnormal situations in pop-up windows of the MessageBox type.
+### 5. Automatically redraw the fractal when resizing the window. The window must be scalable. You can set the minimum and maximum window size. The maximum window size is the size of the screen, and the minimum window size is half the screen size (both in length and width).
+### 6. Allow the user to select two colors startColor and endColor. The color startColor is used to draw the elements of the first iteration, the color endColor - to draw the elements of the last iteration. Colors for intermediate iterations should be calculated using a linear gradient.
+
+![image](https://user-images.githubusercontent.com/95444064/177737012-a39df15a-a8dc-490b-b3bd-d67d9376f8b7.png)
+
+### 7. Change the scale of the fractal for its detailed view. Magnification 2, 3 and 5 - multiple.
+### 8. Provide the ability to move images, incl. with an enlarged image.
+### 9. Save the fractal as a picture.
+In this work, you will be presented with 5 types of fractals:
+
+1. Windblown fractal tree.
+2. Curve Koch.
+3. Sierpinski carpet.
+4. Sierpinski triangle.
+5. Cantor set.
+
+Now to the rules: About the depth of recursion: in order to work correctly, a restriction is put on it, for each fractal its own: 
+ - Pythagorean tree - 8 
+ - Koch curve - 6
+ -  Sierpinski carpet - 4 
+ -  Sierpinski triangle - 7 
+ -  Cantor set - 7
+
+Please observe it. With each change in depth, the fractal is redrawn. My program does not allow zooming in before drawing, so this button is initially disabled. The minimum value of all parameters is 0. The maximum: angles - 180, coefficient 75, distance between segments - 60. To save the image or reset the image movement, you need to call the context menu by pressing the right mouse button on the canvas. The maximum zoom increase is 5. The default depth value is 0.
 ٩(｡•́‿•̀｡)۶
